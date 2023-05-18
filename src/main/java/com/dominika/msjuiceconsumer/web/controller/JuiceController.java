@@ -1,9 +1,10 @@
 package com.dominika.msjuiceconsumer.web.controller;
 
-import java.util.UUID;
+import java.util.*;
 
 import com.dominika.msjuiceconsumer.web.model.JuiceDto;
-import com.dominika.msjuiceconsumer.web.services.JuiceService;
+import com.dominika.msjuiceconsumer.services.JuiceService;
+import jakarta.validation.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -25,7 +26,7 @@ public class JuiceController {
     }
 
     @PostMapping //POST -create new juice
-    public ResponseEntity handlePost(@RequestBody JuiceDto juiceDto){
+    public ResponseEntity handlePost(@Valid @RequestBody JuiceDto juiceDto){
         HttpHeaders headers = new HttpHeaders();
         //TODO - add hostname to url
         headers.add("Location", "/api/v1/juice/"+juiceService.createNewJuice(juiceDto).getId().toString());
@@ -34,7 +35,7 @@ public class JuiceController {
 
     @PutMapping("/{juiceId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateJuice(@PathVariable UUID juiceId, @RequestBody JuiceDto juiceDto){
+    public void updateJuice(@PathVariable UUID juiceId, @Valid @RequestBody JuiceDto juiceDto){
         juiceService.updateJuiceById(juiceId, juiceDto);
     }
 

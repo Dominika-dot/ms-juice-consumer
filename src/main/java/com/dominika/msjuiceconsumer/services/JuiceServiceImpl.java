@@ -1,4 +1,4 @@
-package com.dominika.msjuiceconsumer.web.services;
+package com.dominika.msjuiceconsumer.services;
 
 import java.util.UUID;
 
@@ -20,7 +20,7 @@ public class JuiceServiceImpl implements JuiceService{
     @Override
     public JuiceDto createNewJuice(JuiceDto juiceDto) {
         return JuiceDto.builder()
-            .id(juiceDto.getId())
+            .id(UUID.randomUUID())
             .juiceName(juiceDto.getJuiceName())
             .juiceStyle(juiceDto.getJuiceStyle())
             .upc(juiceDto.getUpc())

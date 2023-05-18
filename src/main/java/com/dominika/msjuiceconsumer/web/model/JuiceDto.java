@@ -1,7 +1,11 @@
 package com.dominika.msjuiceconsumer.web.model;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Null;
+import jakarta.validation.constraints.Positive;
 import lombok.*;
 
 @Data //getters, setters, equals, hashcode
@@ -10,9 +14,15 @@ import lombok.*;
 @Builder
 public class JuiceDto {
 
+    @Null
     private UUID id;
+    @NotBlank
     private String juiceName;
+    @NotBlank
     private String juiceStyle;
+    @Positive
     private Long upc;
+    private OffsetDateTime createdDate;
+    private OffsetDateTime lastUpdatedDate;
 
 }

@@ -3,7 +3,8 @@ package com.dominika.msjuiceconsumer.web.controller;
 import java.util.UUID;
 
 import com.dominika.msjuiceconsumer.web.model.CustomerDto;
-import com.dominika.msjuiceconsumer.web.services.CustomerService;
+import com.dominika.msjuiceconsumer.services.CustomerService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -25,7 +26,7 @@ public class CustomerController {
     }
 
     @PostMapping //POST -create new customer
-    public ResponseEntity handlePost(@RequestBody CustomerDto customerDto){
+    public ResponseEntity handlePost(@Valid @RequestBody CustomerDto customerDto){
         HttpHeaders headers = new HttpHeaders();
         //TODO - add hostname to url
         headers.add("Location", "/api/v1/customer/"+customerService.createNewCustomer(customerDto).getId().toString());
@@ -34,7 +35,7 @@ public class CustomerController {
 
     @PutMapping("/{customerId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateCustomer(@PathVariable UUID customerId, @RequestBody CustomerDto customerDto){
+    public void updateCustomer(@PathVariable UUID customerId, @Valid @RequestBody CustomerDto customerDto){
         customerService.updateCustomerById(customerId, customerDto);
     }
 

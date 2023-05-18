@@ -1,4 +1,4 @@
-package com.dominika.msjuiceconsumer.web.services;
+package com.dominika.msjuiceconsumer.services;
 
 import java.util.UUID;
 

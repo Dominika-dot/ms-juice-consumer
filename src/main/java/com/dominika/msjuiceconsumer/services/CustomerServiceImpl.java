@@ -1,9 +1,8 @@
-package com.dominika.msjuiceconsumer.web.services;
+package com.dominika.msjuiceconsumer.services;
 
 import java.util.UUID;
 
 import com.dominika.msjuiceconsumer.web.model.CustomerDto;
-import com.dominika.msjuiceconsumer.web.model.JuiceDto;
 import org.springframework.stereotype.Service;
 
 @Service
