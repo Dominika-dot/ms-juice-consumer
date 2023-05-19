@@ -3,6 +3,7 @@ package com.dominika.msjuiceconsumer.services;
 import java.util.UUID;
 
 import com.dominika.msjuiceconsumer.web.model.JuiceDto;
+import com.dominika.msjuiceconsumer.web.model.JuiceStyleEnum;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -12,7 +13,7 @@ public class JuiceServiceImpl implements JuiceService{
         return JuiceDto.builder()
             .id(UUID.randomUUID())
             .juiceName("Orange juice")
-            .juiceStyle("raw")
+            .juiceStyle(JuiceStyleEnum.FERMENTED)
             .upc(1L)
             .build();
     }

@@ -18,8 +18,7 @@ public class JuiceDto {
     private UUID id;
     @NotBlank
     private String juiceName;
-    @NotBlank
-    private String juiceStyle;
+    private JuiceStyleEnum juiceStyle;
     @Positive
     private Long upc;
     private OffsetDateTime createdDate;
